@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./AuthContext";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 /** A form that allows users to log into an existing account. */
 export default function Login() {
@@ -15,8 +14,8 @@ export default function Login() {
     const password = formData.get("password");
     try {
       await login({ username, password });
-      // need to navigate back to activities page
-      // navigate("/activities");
+      // need to navigate back to activities page;
+      return redirect("/activities");
     } catch (e) {
       setError(e.message);
     }

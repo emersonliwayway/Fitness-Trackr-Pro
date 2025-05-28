@@ -1,19 +1,22 @@
 import useQuery from "../api/useQuery";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function ActivityDetails() {
-  //   const {
-  //     data: activities,
-  //     loading,
-  //     error,
-  //   } = useQuery("/activities", "activities");
-
   const { id } = useParams();
-  console.log(useParams());
+
+  const {
+    data: activity,
+    loading,
+    error,
+  } = useQuery(`/activities/${id}`, "activities");
+
+  console.log(activity);
 
   return (
     <>
-      <p>Activity ID: {id}</p>
+      <p>Activity {id}</p>
+      <Link to="/activities">Back</Link>
+      <button onClick={() => console.log(`delete ${id}`)}>Delete</button>
     </>
   );
 }
