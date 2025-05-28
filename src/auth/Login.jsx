@@ -15,7 +15,6 @@ export default function Login() {
     try {
       await login({ username, password });
       // need to navigate back to activities page;
-      return redirect("/activities");
     } catch (e) {
       setError(e.message);
     }
