@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 /** A form that allows users to register for a new account */
 export default function Register() {
   const { register } = useAuth();
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
 
   const [error, setError] = useState(null);
 
@@ -15,7 +15,7 @@ export default function Register() {
     try {
       await register({ username, password });
       // navigate back to activites page same as login
-      // navigate("/activities");
+      navigate("/activities");
     } catch (e) {
       setError(e.message);
     }

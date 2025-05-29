@@ -1,8 +1,11 @@
 import useQuery from "../api/useQuery";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
+import useMutation from "../api/useMutation";
 
 export default function ActivityDetails() {
   const { id } = useParams();
+  const { token } = useAuth();
 
   const {
     data: activity,
@@ -10,13 +13,24 @@ export default function ActivityDetails() {
     error,
   } = useQuery(`/activities/${id}`, "activities");
 
-  console.log(activity);
+  const {
+    mutate: deleteActivity,
+    loading: isLoading,
+    error: hasError,
+  } = useMutation("DELETE", `/activities/${id}`, ["activities"]);
 
   return (
-    <>
-      <p>Activity {id}</p>
-      <Link to="/activities">Back</Link>
-      <button onClick={() => console.log(`delete ${id}`)}>Delete</button>
-    </>
+    activity && (
+      <div>
+        <h2>{activity.name}</h2>
+        <p>{activity.creatorName}</p>
+        <p>{activity.description}</p>
+        {token && (
+          <button onClick={() => deleteActivity()}>
+            {isLoading ? "Deleting" : hasError ? hasError : "Delete"}
+          </button>
+        )}
+      </div>
+    )
   );
 }
