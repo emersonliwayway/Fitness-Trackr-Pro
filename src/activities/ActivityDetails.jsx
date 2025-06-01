@@ -1,7 +1,7 @@
 import useQuery from "../api/useQuery";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
-import useMutation from "../api/useMutation";
+import DeleteButton from "./DeleteButton";
 
 export default function ActivityDetails() {
   const { id } = useParams();
@@ -11,13 +11,7 @@ export default function ActivityDetails() {
     data: activity,
     loading,
     error,
-  } = useQuery(`/activities/${id}`, "activities");
-
-  const {
-    mutate: deleteActivity,
-    loading: isLoading,
-    error: hasError,
-  } = useMutation("DELETE", `/activities/${id}`, ["activities"]);
+  } = useQuery(`/activities/${id}`, "activity");
 
   return (
     activity && (
@@ -25,10 +19,10 @@ export default function ActivityDetails() {
         <h2>{activity.name}</h2>
         <p>{activity.creatorName}</p>
         <p>{activity.description}</p>
-        {token && (
-          <button onClick={() => deleteActivity()}>
-            {isLoading ? "Deleting" : hasError ? hasError : "Delete"}
-          </button>
+        {token ?? (
+          <>
+            <DeleteButton />
+          </>
         )}
       </div>
     )

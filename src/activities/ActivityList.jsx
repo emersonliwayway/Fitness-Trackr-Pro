@@ -25,7 +25,7 @@ export default function ActivityList() {
 
 /** Shows a single activity. Logged-in users will also see a delete button. */
 function ActivityListItem({ activity }) {
-  // const { token } = useAuth();
+  const { token } = useAuth();
 
   // const {
   //   mutate: deleteActivity,
