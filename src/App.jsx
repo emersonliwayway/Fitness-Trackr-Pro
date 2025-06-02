@@ -2,6 +2,8 @@ import Register from "./auth/Register";
 import Login from "./auth/Login";
 import ActivitiesPage from "./activities/ActivitiesPage";
 import ActivityDetails from "./activities/ActivityDetails";
+import RoutinePage from "./routines/RoutinePage.jsx";
+import RoutineDetails from "./routines/RoutineDetails.jsx";
 import Error404 from "./Error404.jsx";
 import { Route, Routes } from "react-router-dom";
 
@@ -15,6 +17,8 @@ export default function App() {
     <>
       <Routes>
         <Route index element={<ActivitiesPage />} />
+        <Route path="/routines" element={<RoutinePage />} />
+        <Route path="/routines/:id" element={<RoutineDetails />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/activities" element={<ActivitiesPage />} />
