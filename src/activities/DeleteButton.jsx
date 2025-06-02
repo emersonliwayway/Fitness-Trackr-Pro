@@ -11,13 +11,15 @@ export default function DeleteButton({ activity }) {
   const navigate = useNavigate();
 
   function DeleteBack() {
-    deleteActivity();
+    deleteActivity(activity);
     navigate("/activities");
   }
 
   return (
     <>
-      <button onClick={() => DeleteBack()}>Delete</button>
+      <button className="delete" onClick={() => DeleteBack()}>
+        Delete
+      </button>
     </>
   );
 }

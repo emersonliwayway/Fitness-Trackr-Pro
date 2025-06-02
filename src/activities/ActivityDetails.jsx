@@ -21,11 +21,14 @@ export default function ActivityDetails() {
         <h2>{activity.name}</h2>
         <p>{activity.creatorName}</p>
         <p>{activity.description}</p>
+        <div className="buttons">
+          {token && <DeleteButton activity={activity} />}
 
-        {token && <DeleteButton activity={activity} />}
-
-        {/* add button */}
-        <button onClick={() => navigate("/activities")}>Back</button>
+          {/* add button */}
+          <button className="back" onClick={() => navigate("/activities")}>
+            Back
+          </button>
+        </div>
       </div>
     )
   );

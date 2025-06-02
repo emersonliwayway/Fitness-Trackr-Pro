@@ -41,3 +41,14 @@ ul,
 ol {
   padding-left: 1rem;
 }
+
+/* activities page */
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  color: red;
+}
