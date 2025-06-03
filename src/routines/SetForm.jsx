@@ -1,0 +1,49 @@
+import useMutation from "../api/useMutation";
+import { useParams } from "react-router-dom";
+import useQuery from "../api/useQuery";
+
+export default function SetForm({ routine }) {
+  const {
+    data: activities,
+    loading,
+    error,
+  } = useQuery("/activities", "activities");
+
+  const {
+    mutate: add,
+    loading: isLoading,
+    error: hasError,
+  } = useMutation("POST", "/sets", ["sets"]);
+
+  const addSet = (formData) => {
+    const activityId = formData.get("activityId");
+    const count = formData.get("count");
+    const routineId = routine.id;
+    add({ activityId, count, routineId });
+  };
+
+  return (
+    <>
+      <h2>Add a set</h2>
+      <form action={addSet}>
+        <label>
+          Activity
+          <select name="activityId">
+            {activities &&
+              activities.map((activity) => (
+                <option value={activity.id} key={activity.id}>
+                  {activity.name}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label>
+          Count
+          <input type="number" name="count" />
+        </label>
+        <button>{loading ? "Adding..." : "Add set"}</button>
+        {error && <output>{error}</output>}
+      </form>
+    </>
+  );
+}
