@@ -25,7 +25,7 @@ export default function Sets() {
             {token && <DeleteSet set={set} />}
           </li>
         ))}
-        {token && <SetForm routine={routine} />}
+        {token && <SetForm routineId={id} />}
       </div>
     )
   );

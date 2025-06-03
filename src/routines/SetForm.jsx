@@ -2,7 +2,7 @@ import useMutation from "../api/useMutation";
 import { useParams } from "react-router-dom";
 import useQuery from "../api/useQuery";
 
-export default function SetForm({ routine }) {
+export default function SetForm({ routineId }) {
   const {
     data: activities,
     loading,
@@ -13,12 +13,11 @@ export default function SetForm({ routine }) {
     mutate: add,
     loading: isLoading,
     error: hasError,
-  } = useMutation("POST", "/sets", ["sets"]);
+  } = useMutation("POST", "/sets", ["routines", "routine"]);
 
   const addSet = (formData) => {
     const activityId = formData.get("activityId");
     const count = formData.get("count");
-    const routineId = routine.id;
     add({ activityId, count, routineId });
   };
 

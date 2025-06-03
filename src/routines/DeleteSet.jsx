@@ -5,7 +5,7 @@ export default function DeleteSet({ set }) {
     mutate: deleteSet,
     loading,
     error,
-  } = useMutation("DELETE", "/sets/" + set.id, ["sets"]);
+  } = useMutation("DELETE", "/sets/" + set.id, ["routines", "routine"]);
 
   function SetDelete() {
     deleteSet(set);
