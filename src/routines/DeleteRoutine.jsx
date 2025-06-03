@@ -17,7 +17,9 @@ export default function DeleteRoutine({ routine }) {
 
   return (
     <>
-      <button onClick={() => RoutineDelete()}>Delete</button>
+      <button className="deleteRoutine" onClick={() => RoutineDelete()}>
+        Delete
+      </button>
     </>
   );
 }

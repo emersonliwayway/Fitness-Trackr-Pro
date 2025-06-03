@@ -1,6 +1,5 @@
-import useMutation from "../api/useMutation";
-import { useParams } from "react-router-dom";
-import useQuery from "../api/useQuery";
+import useMutation from "../../api/useMutation";
+import useQuery from "../../api/useQuery";
 
 export default function SetForm({ routineId }) {
   const {

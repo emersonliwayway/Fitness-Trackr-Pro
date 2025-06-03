@@ -1,4 +1,4 @@
-import useMutation from "../api/useMutation";
+import useMutation from "../../api/useMutation";
 
 export default function DeleteSet({ set }) {
   const {
@@ -13,7 +13,9 @@ export default function DeleteSet({ set }) {
 
   return (
     <>
-      <button onClick={() => SetDelete()}>Delete</button>
+      <button className="deleteSet" onClick={() => SetDelete()}>
+        Delete
+      </button>
     </>
   );
 }

@@ -12,7 +12,7 @@ main {
 }
 
 #root {
-  width: 45ch;
+  width: 50ch;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -30,6 +30,7 @@ header nav {
 
 a {
   color: teal;
+  text-decoration: none;
 }
 
 a:hover {
@@ -42,13 +43,29 @@ ol {
   padding-left: 1rem;
 }
 
-/* activities page */
-
 .buttons {
   display: flex;
   justify-content: space-between;
 }
 
-.delete {
-  color: red;
+.sets {
+  display: flex;
+  flex-direction: column;
+}
+
+.setItem {
+  list-style-position: inside;
+}
+
+.deleteSet {
+  display: inline-flex;
+  margin-inline: 10px;
+}
+
+.routineDetails {
+  line-height: 200%;
+}
+
+.deleteRoutine {
+  width: 100%;
 }

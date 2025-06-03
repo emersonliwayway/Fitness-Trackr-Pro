@@ -1,9 +1,8 @@
 import useQuery from "../api/useQuery";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
-import { useNavigate } from "react-router-dom";
 import DeleteRoutine from "./DeleteRoutine";
-import Sets from "./Sets";
+import Sets from "./sets/Sets";
 
 export default function RoutineDetails() {
   const { id } = useParams();
@@ -17,11 +16,10 @@ export default function RoutineDetails() {
 
   return (
     routine && (
-      <div>
+      <div className="routineDetails">
         <h2>{routine.name}</h2>
-        <p>Created by: {routine.creatorName}</p>
-        <p>Goal: {routine.goal}</p>
-        <br />
+        <p>{routine.creatorName}</p>
+        <p>{routine.goal}</p>
         {token && <DeleteRoutine routine={routine} />}
         <Sets />
       </div>
